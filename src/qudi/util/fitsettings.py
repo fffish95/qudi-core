@@ -19,9 +19,9 @@ along with Qudi. If not, see <http://www.gnu.org/licenses/>.
 Copyright (c) the Qudi Developers. See the COPYRIGHT.txt file at the
 top-level directory of this distribution and at <https://github.com/Ulm-IQO/qudi/>
 """
-from qtpy import QtCore, QtGui, QtWidgets
+from PySide2 import QtCore, QtGui, QtWidgets
 from collections import OrderedDict
-from qtwidgets.scientific_spinbox import ScienDSpinBox
+from qudi.util.widgets.scientific_spinbox import ScienDSpinBox
 import numpy as np
 import math
 
