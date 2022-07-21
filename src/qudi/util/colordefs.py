@@ -50,6 +50,7 @@ class ColorScale:
     def __init__(self):
         color_positions = np.linspace(0.0, 1.0, num=len(self.COLORS))
         self.colormap = pg.ColorMap(color_positions, self.COLORS.astype(int))
+        self.cmap_normed = pg.ColorMap(color_positions, self.COLORS_INV / 255)
 
         # get the LookUpTable (LUT), first two params should match the position scale extremes
         # passed to ColorMap().
