@@ -81,6 +81,8 @@ class ColorScaleRainbow(ColorScale):
         dtype=np.ubyte
     )
 
+    COLORS_INV = COLORS[::-1]
+
 
 class ColorScaleMagma(ColorScale):
     """ Magma color scale proposal for matplotlib default color scale """
@@ -606,6 +608,7 @@ class ColorScaleInferno(ColorScale):
          [0.988362, 0.998364, 0.644924, 1.0]],
         dtype=float
     )
+    COLORS_INV = COLORS[::-1]
 
 
 class ColorScalePlasma(ColorScale):
@@ -869,6 +872,7 @@ class ColorScalePlasma(ColorScale):
          [0.940015, 0.975158, 0.131326, 1.0]],
         dtype=float
     )
+    COLORS_INV = COLORS[::-1]
 
 
 class ColorScaleViridis(ColorScale):
@@ -1132,6 +1136,7 @@ class ColorScaleViridis(ColorScale):
          [0.993248, 0.906157, 0.143936, 1.0]],
         dtype=float
     )
+    COLORS_INV = COLORS[::-1]
 
 
 class ColorScaleRdBu(ColorScale):
