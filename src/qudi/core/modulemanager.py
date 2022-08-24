@@ -484,10 +484,11 @@ class ManagedModule(QtCore.QObject):
                 # If it is a GUI module, show it again.
                 if self.module_base == 'gui':
                     self._instance.show()
+                if self.is_remote:
+                    logger.info(f'Activating remote {self.module_base} module "{self.remote_url}"')
                 return
 
-            if self.is_remote:
-                logger.info(f'Activating remote {self.module_base} module "{self.remote_url}"')
+
             else:
                 logger.info(
                     f'Activating {self.module_base} module "{self.module_name}.{self.class_name}"'
@@ -542,28 +543,10 @@ class ManagedModule(QtCore.QObject):
                     pass
                 raise RuntimeError(f'Failed to activate {self.module_base} module "{self.name}"!')
 
-            if self.is_remote:
-                logger.info('timer started')
-                self.__poll_timer = QtCore.QTimer(self)
-                self.__poll_timer.setInterval(int(round(self.__state_poll_interval * 1000)))
-                self.__poll_timer.setSingleShot(True)
-                self.__poll_timer.timeout.connect(self._poll_module_state)
-                self.__poll_timer.start()
-            else:
-                self._instance.module_state.sigStateChanged.connect(self._state_change_callback)
 
-    @QtCore.Slot()
-    def _poll_module_state(self):
-        with self._lock:
-            state = self.state
-            logger.info('timer sig')
-            if state != self.__last_state:
-                self.__last_state = state
-                self.sigStateChanged.emit(self._base, self._name, state)
-            try:
-                self.__poll_timer.start()
-            except AttributeError:
-                pass
+
+            self._instance.module_state.sigStateChanged.connect(self._state_change_callback)
+
 
     @QtCore.Slot(object)
     def _state_change_callback(self, event=None):
