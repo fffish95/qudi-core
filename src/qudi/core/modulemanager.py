@@ -543,6 +543,7 @@ class ManagedModule(QtCore.QObject):
                 raise RuntimeError(f'Failed to activate {self.module_base} module "{self.name}"!')
 
             if self.is_remote:
+                logger.info('timer started')
                 self.__poll_timer = QtCore.QTimer(self)
                 self.__poll_timer.setInterval(int(round(self.__state_poll_interval * 1000)))
                 self.__poll_timer.setSingleShot(True)
@@ -555,6 +556,7 @@ class ManagedModule(QtCore.QObject):
     def _poll_module_state(self):
         with self._lock:
             state = self.state
+            logger.info('timer sig')
             if state != self.__last_state:
                 self.__last_state = state
                 self.sigStateChanged.emit(self._base, self._name, state)
