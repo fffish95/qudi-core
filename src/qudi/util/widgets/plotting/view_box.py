@@ -532,7 +532,7 @@ class RubberbandZoomMixin:
                 current_pos = self.mapToView(ev.pos())
                 zoom_rect = QtCore.QRectF(start_pos, current_pos)
                 if mode == self.SelectionMode.XY:
-                    self.updateScaleBox(ev.buttonDownPos(), ev.pos())
+                    self.updateScaleBox(self.mapViewToScene(start_pos), self.mapViewToScene(current_pos))
                     if ev.isFinish():
                         self.rbScaleBox.hide()
                         self.setRange(rect=zoom_rect, padding=0)
