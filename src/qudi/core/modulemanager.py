@@ -597,13 +597,14 @@ class ManagedModule(QtCore.QObject):
                 module.deactivate()
 
             # Disable state updated
-            try:
-                self.__poll_timer.stop()
-                self.__poll_timer.timeout.disconnect()
-            except AttributeError:
-                self._instance.module_state.sigStateChanged.disconnect(self._state_change_callback)
-            finally:
-                self.__poll_timer = None
+            if not self.is_remote:
+                try:
+                    self.__poll_timer.stop()
+                    self.__poll_timer.timeout.disconnect()
+                except AttributeError:
+                    self._instance.module_state.sigStateChanged.disconnect(self._state_change_callback)
+                finally:
+                    self.__poll_timer = None
 
             # Actual deactivation of this module
             if self._instance.is_module_threaded:
