@@ -14,12 +14,13 @@ unix_dep = [
     'jupytext',
     'lmfit>=1.0.3',
     'matplotlib',
-    'numpy',
+    'numpy==1.24.3',
     'pyqtgraph>=0.13.0',
     'PySide2==5.15.2',
     'rpyc>=5.0.1',
     'ruamel.yaml>=0.17.16',
     'scipy>=1.7.1',
+    'psutil == 5.9.1',
     'jsonschema>=4.2.1',
 ]
 
@@ -33,12 +34,13 @@ windows_dep = [
     'jupytext>=1.13.0',
     'lmfit>=1.0.3',
     'matplotlib>=3.4.3',
-    'numpy>=1.21.3',
+    'numpy==1.24.3',
     'pyqtgraph>=0.13.0',
     'PySide2==5.15.2',
     'rpyc>=5.0.1',
     'ruamel.yaml>=0.17.16',
     'scipy>=1.7.1',
+    'psutil == 5.9.1',
     'jsonschema>=4.2.1',
 ]
 
