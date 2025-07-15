@@ -87,7 +87,7 @@ class Connector:
         """
         bases = {cls.__name__ for cls in target.__class__.mro()}
         if self.interface not in bases:
-            pass
+            pass # need to debug this for remote modules
             # raise RuntimeError(
             #     f'Module "{target}" connected to connector "{self.name}" does not implement '
             #     f'interface "{self.interface}".'
