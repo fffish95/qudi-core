@@ -87,10 +87,11 @@ class Connector:
         """
         bases = {cls.__name__ for cls in target.__class__.mro()}
         if self.interface not in bases:
-            raise RuntimeError(
-                f'Module "{target}" connected to connector "{self.name}" does not implement '
-                f'interface "{self.interface}".'
-            )
+            pass
+            # raise RuntimeError(
+            #     f'Module "{target}" connected to connector "{self.name}" does not implement '
+            #     f'interface "{self.interface}".'
+            # )
         self._obj_proxy = OverloadProxy(target, self.interface)
         self._obj_ref = weakref.ref(target, self.__module_died_callback)
 
